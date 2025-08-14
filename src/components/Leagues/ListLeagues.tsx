@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useGetLeagues } from "../../hooks/useGetLeagues";
+import { useNavigate } from "react-router-dom";
 
 type ListLeaguesProps = {
   selectedSport?: string;
@@ -10,6 +11,7 @@ export const ListLeagues = ({
   selectedSport,
   searchQuery,
 }: ListLeaguesProps) => {
+  const navigate = useNavigate();
   const { leagues, loading, error } = useGetLeagues();
 
   const filteredLeagues = useMemo(() => {
@@ -53,7 +55,10 @@ export const ListLeagues = ({
             </tr>
           )}
           {searchedLeagues.map((league) => (
-            <tr key={league.idLeague}>
+            <tr
+              key={league.idLeague}
+              onClick={() => navigate(`/${league.idLeague}`)}
+            >
               <td>{league.strLeague}</td>
               <td>{league.strSport}</td>
               <td>{league.strLeagueAlternate || "N/A"}</td>
