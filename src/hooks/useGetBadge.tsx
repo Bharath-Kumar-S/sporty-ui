@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { settings } from "../settings";
 
 export const useGetBadge = (id: number) => {
   const [badge, setBadge] = React.useState<string | null>(null);
@@ -12,7 +13,7 @@ export const useGetBadge = (id: number) => {
 
     const getBadge = async () => {
       if (!id) return null;
-      const url = `https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?badge=1&id=${id}`;
+      const url = `${settings.badgeUrl}?badge=1&id=${id}`;
 
       const response = await fetch(url);
       if (!response.ok) {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { settings } from "../settings";
 
 type League = {
   idLeague: string;
@@ -16,9 +17,7 @@ export const useGetLeagues = () => {
   useEffect(() => {
     const fetchLeagues = async () => {
       try {
-        const response = await fetch(
-          "https://www.thesportsdb.com/api/v1/json/3/all_leagues.php"
-        );
+        const response = await fetch(settings.leaguesUrl);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
