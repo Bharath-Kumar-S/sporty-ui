@@ -1,9 +1,11 @@
 import { ListLeagues } from "./ListLeagues";
 import { useState } from "react";
 import { SelectLeague } from "./SelectLeague";
+import { SearchLeague } from "./SearchLeague";
 
 export const Leagues = () => {
   const [selectedSport, setSelectedSport] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   return (
     <>
@@ -13,7 +15,13 @@ export const Leagues = () => {
         onSelectSport={(sport) => setSelectedSport(sport)}
         value={selectedSport}
       />
-      <ListLeagues selectedSport={selectedSport} />
+      <SearchLeague
+        onSearch={(query) => {
+          setSearchQuery(query);
+        }}
+        value={searchQuery}
+      />
+      <ListLeagues selectedSport={selectedSport} searchQuery={searchQuery} />
     </>
   );
 };

@@ -1,10 +1,10 @@
 import "./App.css";
-import { Leagues } from "./components/Leagues/Leagues";
+import { LeaguePage } from "./pages/LeaguePage";
 
 function App() {
   return (
     <>
-      <Leagues />
+      <LeaguePage />
     </>
   );
 }

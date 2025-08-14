@@ -10,17 +10,17 @@ export const SelectLeague = ({ onSelectSport, value }: SelectLeagueProps) => {
 
   return (
     <div>
-      <h3>Select a League</h3>
-      {uniqueSports.length > 0 && (
-        <select onChange={(e) => onSelectSport(e.target.value)} value={value}>
-          <option value="">Select a sport</option>
-          {uniqueSports.map((sport) => (
+      <h4>Select a League</h4>
+
+      <select onChange={(e) => onSelectSport(e.target.value)} value={value}>
+        <option value="">Select a sport</option>
+        {uniqueSports.length > 0 &&
+          uniqueSports.map((sport) => (
             <option key={sport} value={sport}>
               {sport}
             </option>
           ))}
-        </select>
-      )}
+      </select>
     </div>
   );
 };
